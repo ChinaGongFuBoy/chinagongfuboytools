@@ -15,6 +15,6 @@
 ### 项目结构
 
 |主要项目   |概述|
-|---|
+|---|---|
 |gongfuboy-uitls   |主要维护了一部分常见的工具类，bean工具之类的|
 |springboot-mybatis|一个springboot集成mybatis的简单web工程demo|
