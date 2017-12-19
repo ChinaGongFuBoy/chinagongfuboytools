@@ -1,5 +1,7 @@
 package com.github.gongfuboy.utils;
 
+import org.junit.Test;
+
 /**
  * @author GongFuBoy
  * @date 2017/12/12
@@ -7,7 +9,7 @@ package com.github.gongfuboy.utils;
  */
 public class TempTest {
 
-    @org.junit.Test
+    @Test
     public void testString() {
         String s = "java";
         String s1 = String.valueOf("java");
