@@ -1,7 +1,13 @@
 package org.spring.springboot.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import org.spring.springboot.domain.City;
+import org.spring.springboot.service.UserService;
+import org.spring.springboot.wechat.CommonParamAquired;
+import org.spring.springboot.wechat.utils.RestResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +21,13 @@ import java.io.PrintWriter;
  * Created by bysocket on 07/02/2017.
  */
 @RestController
+@CrossOrigin
 @RequestMapping(value="/wechat")
 public class WeChatController {
+
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value = "/entrance", method = RequestMethod.GET)
     public void wechatEntrance(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String signature = request.getParameter("signature");
@@ -35,5 +46,38 @@ public class WeChatController {
         }
         out.close();
 
+    }
+
+    @RequestMapping(value = "/authorize", method = RequestMethod.GET)
+    public RestResponse<String> authorizeUrl(HttpServletRequest request, HttpServletResponse response,String code) throws Exception{
+        RestResponse<String> restResponse = new RestResponse<String>();
+        JSONObject jsonObject = CommonParamAquired.aquiredAuthorizeInfo(code);
+        String openid = CommonParamAquired.aquiredOpenId(jsonObject);
+        String accessToken = CommonParamAquired.authorizeAccessToken(jsonObject);
+        String userInfoJson = CommonParamAquired.aquiredUserInfo(accessToken,openid);
+        userService.saveUser(userInfoJson);
+        restResponse.setCode("ok");
+        restResponse.setData("/authorize");
+        return restResponse;
+    }
+
+    @RequestMapping(value = "/receiveMsg", method = RequestMethod.POST)
+    public String receiveMsg(HttpServletRequest request, HttpServletResponse response,String code){
+        RestResponse<String> restResponse = new RestResponse<String>();
+        if(code == null || "".equals(code)){
+            System.out.println("the code is null");
+        }else{
+            System.out.println("the code value is "+code);
+        }
+        restResponse.setCode("ok");
+        restResponse.setData("/authorize");
+        System.out.println(request.getAttribute("code"));
+        System.out.println("The request is coming");
+        return "您好，正忙，请稍等！";
+    }
+
+    @RequestMapping(value = "/do", method = RequestMethod.GET)
+    public String doSomething(){
+        return "do something";
     }
 }

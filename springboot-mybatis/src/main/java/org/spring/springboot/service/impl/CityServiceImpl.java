@@ -6,6 +6,7 @@ import org.spring.springboot.dao.CityDao;
 import org.spring.springboot.domain.City;
 import org.spring.springboot.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.Page;
@@ -16,7 +17,7 @@ import com.github.pagehelper.PageHelper;
  *
  * Created by bysocket on 07/02/2017.
  */
-@Service
+@Component
 public class CityServiceImpl implements CityService {
 
     @Autowired
