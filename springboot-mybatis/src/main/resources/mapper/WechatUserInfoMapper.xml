@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.spring.springboot.dao.WechatUserInfoMapper">
+    <resultMap id="BaseResultMap" type="org.spring.springboot.domain.WechatUserInfo">
+        <result column="id" property="id" jdbcType="BIGINT"/>
+        <result column="nick_name" property="nickName" jdbcType="VARCHAR"/>
+        <result column="open_id" property="openId" jdbcType="VARCHAR"/>
+        <result column="sex" property="sex" jdbcType="INTEGER"/>
+        <result column="headimgurl" property="headimgurl" jdbcType="VARCHAR"/>
+        <result column="language" property="language" jdbcType="VARCHAR" />
+        <result column="city" property="city" jdbcType="VARCHAR"/>
+        <result column="province" property="province" jdbcType="VARCHAR"/>
+        <result column="country" property="country" jdbcType="VARCHAR"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="org.spring.springboot.domain.WechatUserInfo">
+        insert into wechat_user_info
+        (nick_name,
+        open_id,
+        sex,
+        headimgurl,
+        language,
+        city,
+        province,
+        country,
+        update_time,
+        create_time
+        )
+        values(#{nickName,jdbcType=VARCHAR},
+        #{openId,jdbcType=VARCHAR},
+        #{sex,jdbcType=INTEGER},
+        #{headimgurl,jdbcType=VARCHAR},
+        #{language,jdbcType=VARCHAR},
+        #{city,jdbcType=VARCHAR},
+        #{province,jdbcType=VARCHAR},
+        #{country,jdbcType=VARCHAR},
+        #{updateTime,jdbcType=TIMESTAMP},
+        #{createTime,jdbcType=TIMESTAMP})
+    </insert>
+
+
+</mapper>
