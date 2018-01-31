@@ -46,6 +46,7 @@ public class WeChatController {
         }
         out.close();
 
+
     }
 
     @RequestMapping(value = "/authorize", method = RequestMethod.GET)

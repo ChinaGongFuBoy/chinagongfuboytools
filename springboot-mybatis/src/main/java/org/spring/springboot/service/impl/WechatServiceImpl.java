@@ -8,4 +8,5 @@ import org.spring.springboot.service.WechatService;
  * @date created in $time $date
  */
 public class WechatServiceImpl implements WechatService{
+
 }
