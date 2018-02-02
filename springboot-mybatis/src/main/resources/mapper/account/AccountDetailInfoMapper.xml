@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.spring.springboot.dao.account.AccountDetailInfoMapper" >
+
+  <resultMap id="BaseResultMap" type="org.spring.springboot.domain.account.AccountDetailInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="traffic_amount" property="trafficAmount" jdbcType="DECIMAL" />
+    <result column="house_account" property="houseAccount" jdbcType="DECIMAL" />
+    <result column="medical_amount" property="medicalAmount" jdbcType="DECIMAL" />
+    <result column="message_account" property="messageAccount" jdbcType="DECIMAL" />
+    <result column="other_account" property="otherAccount" jdbcType="DECIMAL" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+
+  <sql id="Base_Column_List" >
+    id, traffic_amount, house_account, medical_amount, message_account, other_account, 
+    open_id, update_time, create_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.spring.springboot.example.account.AccountDetailInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from account_detail_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from account_detail_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from account_detail_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.spring.springboot.example.account.AccountDetailInfoExample" >
+    delete from account_detail_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.spring.springboot.domain.account.AccountDetailInfo" >
+    insert into account_detail_info (id, traffic_amount, house_account, 
+      medical_amount, message_account, other_account, 
+      open_id, update_time, create_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{trafficAmount,jdbcType=DECIMAL}, #{houseAccount,jdbcType=DECIMAL}, 
+      #{medicalAmount,jdbcType=DECIMAL}, #{messageAccount,jdbcType=DECIMAL}, #{otherAccount,jdbcType=DECIMAL}, 
+      #{openId,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.account.AccountDetailInfo" >
+    insert into account_detail_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="trafficAmount != null" >
+        traffic_amount,
+      </if>
+      <if test="houseAccount != null" >
+        house_account,
+      </if>
+      <if test="medicalAmount != null" >
+        medical_amount,
+      </if>
+      <if test="messageAccount != null" >
+        message_account,
+      </if>
+      <if test="otherAccount != null" >
+        other_account,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="trafficAmount != null" >
+        #{trafficAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="houseAccount != null" >
+        #{houseAccount,jdbcType=DECIMAL},
+      </if>
+      <if test="medicalAmount != null" >
+        #{medicalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="messageAccount != null" >
+        #{messageAccount,jdbcType=DECIMAL},
+      </if>
+      <if test="otherAccount != null" >
+        #{otherAccount,jdbcType=DECIMAL},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.spring.springboot.example.account.AccountDetailInfoExample" resultType="java.lang.Integer" >
+    select count(*) from account_detail_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update account_detail_info
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.trafficAmount != null" >
+        traffic_amount = #{record.trafficAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.houseAccount != null" >
+        house_account = #{record.houseAccount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.medicalAmount != null" >
+        medical_amount = #{record.medicalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.messageAccount != null" >
+        message_account = #{record.messageAccount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.otherAccount != null" >
+        other_account = #{record.otherAccount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.openId != null" >
+        open_id = #{record.openId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update account_detail_info
+    set id = #{record.id,jdbcType=BIGINT},
+      traffic_amount = #{record.trafficAmount,jdbcType=DECIMAL},
+      house_account = #{record.houseAccount,jdbcType=DECIMAL},
+      medical_amount = #{record.medicalAmount,jdbcType=DECIMAL},
+      message_account = #{record.messageAccount,jdbcType=DECIMAL},
+      other_account = #{record.otherAccount,jdbcType=DECIMAL},
+      open_id = #{record.openId,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.account.AccountDetailInfo" >
+    update account_detail_info
+    <set >
+      <if test="trafficAmount != null" >
+        traffic_amount = #{trafficAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="houseAccount != null" >
+        house_account = #{houseAccount,jdbcType=DECIMAL},
+      </if>
+      <if test="medicalAmount != null" >
+        medical_amount = #{medicalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="messageAccount != null" >
+        message_account = #{messageAccount,jdbcType=DECIMAL},
+      </if>
+      <if test="otherAccount != null" >
+        other_account = #{otherAccount,jdbcType=DECIMAL},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.account.AccountDetailInfo" >
+    update account_detail_info
+    set traffic_amount = #{trafficAmount,jdbcType=DECIMAL},
+      house_account = #{houseAccount,jdbcType=DECIMAL},
+      medical_amount = #{medicalAmount,jdbcType=DECIMAL},
+      message_account = #{messageAccount,jdbcType=DECIMAL},
+      other_account = #{otherAccount,jdbcType=DECIMAL},
+      open_id = #{openId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

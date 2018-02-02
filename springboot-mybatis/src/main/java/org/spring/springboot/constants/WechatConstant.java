@@ -1,4 +1,4 @@
-package org.spring.springboot.wechat.utils;
+package org.spring.springboot.constants;
 
 /**
  *
@@ -6,9 +6,9 @@ package org.spring.springboot.wechat.utils;
  * @author yigang.wu
  * @date created in $time $date
  */
-public class Constant {
+public class WechatConstant {
     /**服务器的域名地址*/
-    public static final String serverUrl = "s48bmq.natappfree.cc";
+    public static final String serverUrl = "qkybcn.natappfree.cc";
     public static final String appId = "wx57e0b6adf819af4f";
     public static final String appsecret = "8a141160e4fe1f4cba74f9ca5a9bf946";
     /**普通的access_token的地址*/

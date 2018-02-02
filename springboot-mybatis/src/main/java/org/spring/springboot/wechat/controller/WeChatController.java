@@ -1,4 +1,4 @@
-package org.spring.springboot.controller;
+package org.spring.springboot.wechat.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import org.spring.springboot.domain.City;
