@@ -18,6 +18,7 @@
 |---|---|
 |gongfuboy-uitls   |主要维护了一部分常见的工具类，bean工具之类的|
 |springboot-mybatis|一个springboot集成mybatis的简单web工程demo|
+|springboot-mybatis-mutil-datasource|springboot项目集成多数据源的使用|
 
 ### gongfuboy-uitls详解
 
