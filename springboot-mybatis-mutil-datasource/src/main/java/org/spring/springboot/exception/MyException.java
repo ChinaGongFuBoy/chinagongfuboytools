@@ -1,4 +1,4 @@
-package org.spring.springboot;
+package org.spring.springboot.exception;
 
 /**
  * @author yigang.wu
