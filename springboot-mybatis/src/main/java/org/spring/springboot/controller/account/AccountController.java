@@ -2,6 +2,7 @@ package org.spring.springboot.controller.account;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
+import org.apache.http.HttpRequest;
 import org.spring.springboot.assemble.account.AccountAssemble;
 import org.spring.springboot.domain.account.AccountDetailInfo;
 import org.spring.springboot.service.account.AccountDetailInfoService;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
@@ -65,7 +67,7 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/updateAccountById", method = RequestMethod.POST)
-    public RestResponse<Void> updateAccountById(String updateCondition){
+    public RestResponse<Void> updateAccountById(String updateCondition, HttpServletRequest request){
         RestResponse<Void> restResponse = new RestResponse<Void>();
         AccountDetailInfo accountDetailInfo = null;
         if(!StringUtils.isEmpty(updateCondition)){

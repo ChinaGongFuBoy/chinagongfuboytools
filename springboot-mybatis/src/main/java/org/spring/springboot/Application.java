@@ -3,8 +3,10 @@ package org.spring.springboot;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 /**
  * Spring Boot 应用启动类
@@ -15,7 +17,7 @@ import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomi
 @SpringBootApplication
 // mapper 接口类扫描包配置
 @MapperScan("org.spring.springboot.dao")
-public class Application implements EmbeddedServletContainerCustomizer{
+public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         // 程序启动入口
@@ -24,7 +26,8 @@ public class Application implements EmbeddedServletContainerCustomizer{
     }
 
 	@Override
-	public void customize(ConfigurableEmbeddedServletContainer container) {
-		container.setPort(8080);
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(Application.class);
 	}
+
 }

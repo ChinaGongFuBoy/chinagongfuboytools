@@ -16,6 +16,7 @@ public class CommonParamAquired {
 
 
     public static Logger logger = Logger.getLogger(CommonParamAquired.class);
+
     /**
      * 获取access_token的值
      * @return
@@ -68,5 +69,9 @@ public class CommonParamAquired {
         String responseStr = HttpClientHelper.requestGet(userInfoUrl);
         logger.info("用户信息是："+responseStr);
         return responseStr;
+    }
+
+    public static void main(String[] args) throws Exception{
+        System.out.println(HttpClientHelper.requestGet("https://api.weixin.qq.com/cgi-bin/menu/get?access_token=6_0IHwvYdISFVPZui1o1Lp39aga9uSpRNz8Pf08_C3wo9v6h7D76p-gmryJvtqCkKPWnX4_aD4qodf0hQuHl_Iy67TmxZHCM2dSPDoeTxQbJ4nrGuTyZe5j0uYXfdnQhq87Wzt662-xQJGevyyIIBiAIALLE"));
     }
 }
