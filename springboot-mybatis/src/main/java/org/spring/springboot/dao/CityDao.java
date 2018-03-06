@@ -14,7 +14,6 @@ import com.github.pagehelper.Page;
  */
 public interface CityDao {
 
-
     /**
      * 根据城市名称，查询城市信息
      *
