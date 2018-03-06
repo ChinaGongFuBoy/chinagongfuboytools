@@ -16,4 +16,5 @@ public class QuartzDemo {
     public void work(){
         System.out.println("执行定时任务开始"+new Date());
     }
+
 }
